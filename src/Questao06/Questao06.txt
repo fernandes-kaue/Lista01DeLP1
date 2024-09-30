@@ -1,0 +1,24 @@
+“Para que um objeto realize alguma tarefa, deve haver um estímulo enviado a este  objeto. Independentemente da origem do estímulo, quando ele ocorre, diz-se que o  objeto em questão está recebendo uma mensagem.” Explique como ocorre esse envio  de mensagem a um objeto e dê um exemplo em código.
+
+r= O envio de mensagens a um objeto ocorre quando um método desse objeto é chamado, representando um estímulo para que ele realize uma tarefa específica. Esse processo envolve a criação do objeto a partir de uma classe e a invocação de um método usando a notação de ponto (.), que indica o envio da mensagem ao objeto. Por exemplo, ao instanciar um objeto da classe Carro e chamar o método acelerar(), o objeto executa a ação correspondente, mostrando como a colaboração entre objetos é realizada através do envio de mensagens.
+
+'''
+class Carro {
+    private String modelo;
+
+    public Carro(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public void acelerar() {
+        System.out.println(modelo + " está acelerando.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Carro meuCarro = new Carro("Fusca"); // Criação do objeto
+        meuCarro.acelerar(); // Envio da mensagem "acelerar" ao objeto "meuCarro"
+    }
+}
+'''
