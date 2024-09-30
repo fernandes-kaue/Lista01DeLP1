@@ -1,0 +1,19 @@
+7) Quando a palavra this é obrigatória dentro de um método na classe? Se necessário,  exemplifique.
+
+r= A palavra this é utilizada para referenciar explicitamente a instância atual da classe e se torna obrigatória em situações em que há ambiguidade entre os parâmetros de um método ou construtor e os atributos da classe. Por exemplo, em um construtor da classe Pessoa, se tanto o atributo quanto o parâmetro se chamam "nome", a palavra this deve ser utilizada para diferenciar o atributo da classe do parâmetro. Sem o uso de this, o compilador não saberá a qual variável "nome" estamos nos referindo, resultando em um erro de compilação.
+
+'''
+
+class Pessoa {
+    private String nome;
+
+    public Pessoa(String nome) {
+        this.nome = nome; // 'this.nome' se refere ao atributo da classe
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome; // 'this.nome' se refere ao atributo da classe
+    }
+}
+
+'''
