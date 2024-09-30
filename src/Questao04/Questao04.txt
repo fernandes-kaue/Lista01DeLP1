@@ -1,0 +1,3 @@
+4) O que é sobrecarga de método?
+
+r= A sobrecarga de métodos ocorre quando uma classe define múltiplos métodos com o mesmo nome, mas com assinaturas diferentes (ou seja, com diferentes tipos, número ou ordem de parâmetros). A sobrecarga permite que o mesmo método possa ser chamado com diferentes argumentos, proporcionando maior flexibilidade no uso. O compilador escolhe qual método executar com base na assinatura da chamada.

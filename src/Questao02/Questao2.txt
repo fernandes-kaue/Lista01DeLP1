@@ -1,3 +1,3 @@
-Por que não é recomendado que as variáveis de instância de uma classe sejam  public?
+2) Por que não é recomendado que as variáveis de instância de uma classe sejam  public?
 
 r= Não é recomendado que variáveis de instância sejam public porque isso viola o princípio do encapsulamento, expondo os dados internos da classe para acesso e modificação direta de qualquer parte do código. Isso dificulta o controle de como os dados são manipulados, impede validações, compromete a segurança e pode tornar a manutenção do código mais difícil. Ao manter as variáveis privadas e fornecer métodos de acesso (getters e setters), a classe controla melhor a integridade dos dados, facilita mudanças futuras e garante que as variáveis sejam acessadas de forma segura e adequada.

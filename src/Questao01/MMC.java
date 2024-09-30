@@ -1,4 +1,4 @@
-package Questao1;
+package Questao01;
 
 public class MMC {
 
