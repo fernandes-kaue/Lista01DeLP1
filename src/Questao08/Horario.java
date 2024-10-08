@@ -108,32 +108,86 @@ public class Horario {
     e. Elabore um método para somar dois horários: public static void soma (Horario  horario1, Horario horario2). Não é para alterar os valores das variáveis de  instância de horario1 e horario2. Apenas somar e imprimir. Este método poderia  ser não static? Justifique.
      */
 
-    public static void somarHorario(Horario horario1, Horario horario2) {
-        Horario horario3 = new Horario();
+    public static void soma(Horario horario1, Horario horario2) {
+        int novaHora = horario1.getHora() + horario2.getHora();
+        int novoMinuto = horario1.getMinuto() + horario2.getMinuto();
+        int novoSegundo = horario1.getSegundo() + horario2.getSegundo();
 
-        int hora = horario1.getHora() + horario2.getHora();
-        if (hora >= 0 && hora <= 23) {
-            horario3.setHora(hora);
-        } else {
-            System.out.println("A soma das horas ultrapassa 24 horas. Tente novamente");
+        if (novoSegundo >= 60) {
+            novoSegundo -= 60;
+            novoMinuto++;
         }
 
-        int minuto = horario1.getMinuto() + horario2.getMinuto();
-        if (minuto >= 0 && minuto <= 59) {
-            horario3.setMinuto(minuto);
-        } else {
-            System.out.println("A soma dos minutos ultrapassa 59 minutos. Tente novamente");
+        if (novoMinuto >= 60) {
+            novoMinuto -= 60;
+            novaHora++;
         }
 
-        int segundo = horario1.getSegundo() + horario2.getSegundo();
-        if (segundo >= 0 && segundo <= 59) {
-            horario3.setSegundo(segundo);
-        } else {
-            System.out.println("A soma dos segundos ultrapassa 59 segundos. Tente novamente.");
+        if (novaHora >= 24) {
+            novaHora -= 24;
         }
-        horario3.setSegundo(segundo);
 
-        System.out.println(horario3);
+        System.out.println("Horário resultante da soma: " + novaHora + ":" + novoMinuto + ":" + novoSegundo);
     }
+
+    /*
+    Método soma poderia ser não static?
+Sim, este método poderia ser não static, mas isso mudaria sua abordagem de uso. Se o método fosse não estático, ele precisaria ser chamado em um objeto de Horario, e poderia somar esse objeto com outro. A vantagem de ser não estático seria que o método estaria mais diretamente relacionado ao comportamento de um objeto Horario, tornando a operação mais natural na orientação a objetos.
+     */
+
+    /*
+    f. Elabore um método para somar dois horários com a seguinte assinatura: public  void soma (Horario horario).
+     */
+
+    public void soma(Horario horario) {
+        this.segundo += horario.getSegundo();
+        this.minuto += horario.getMinuto();
+        this.hora += horario.getHora();
+
+        if (this.segundo >= 60) {
+            this.segundo -= 60;
+            this.minuto++;
+        }
+
+        if (this.minuto >= 60) {
+            this.minuto -= 60;
+            this.hora++;
+        }
+
+        if (this.hora >= 24) {
+            this.hora -= 24;
+        }
+    }
+
+
+    /*
+    g. Elabore um método para somar dois horários com a seguinte assinatura: public  void soma (int horas, int minutos, int segundos). As horas, minutos e segundos  devem ser somados aos valores do objeto que chamou o método (objeto this).  No entanto, escreva este método sem usar a palavra this (usando os métodos  set).
+     */
+
+    public void soma(int horas, int minutos, int segundos) {
+        // Somando os segundos
+        int novoSegundo = getSegundo() + segundos;
+        int novoMinuto = getMinuto() + minutos;
+        int novaHora = getHora() + horas;
+
+        if (novoSegundo >= 60) {
+            novoSegundo -= 60;
+            novoMinuto++;
+        }
+
+        if (novoMinuto >= 60) {
+            novoMinuto -= 60;
+            novaHora++;
+        }
+
+        if (novaHora >= 24) {
+            novaHora -= 24;
+        }
+
+        setSegundo(novoSegundo);
+        setMinuto(novoMinuto);
+        setHora(novaHora);
+    }
+
 
 }
