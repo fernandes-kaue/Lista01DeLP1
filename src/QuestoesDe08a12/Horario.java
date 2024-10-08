@@ -1,4 +1,4 @@
-package Questao08;
+package QuestoesDe08a12;
 
 
 /*
@@ -188,6 +188,92 @@ Sim, este método poderia ser não static, mas isso mudaria sua abordagem de uso
         setMinuto(novoMinuto);
         setHora(novaHora);
     }
+
+    /*
+    9) Reescreva uma nova versão do método public void soma (Horario
+horario) (feito na questão 7c), com a seguinte assinatura: public static
+Horario somar (Horario horario1, Horario horario2). Este
+método deve somar os dois horários e instanciar um novo com os valores da soma.
+Este novo objeto deve ser retornado.
+a. Seria possível este método também chamar-se soma já que o tipo de retorno é
+diferente? Por quê?
+     */
+
+    public static Horario somar(Horario horario1, Horario horario2) {
+
+        int novaHora = horario1.getHora() + horario2.getHora();
+        int novoMinuto = horario1.getMinuto() + horario2.getMinuto();
+        int novoSegundo = horario1.getSegundo() + horario2.getSegundo();
+
+        if (novoSegundo >= 60) {
+            novoSegundo -= 60;
+            novoMinuto++;
+        }
+
+        if (novoMinuto >= 60) {
+            novoMinuto -= 60;
+            novaHora++;
+        }
+
+        if (novaHora >= 24) {
+            novaHora -= 24;
+        }
+
+        return new Horario(novaHora, novoMinuto, novoSegundo);
+    }
+
+    /*
+    9.a) Sim, o método poderia se chamar soma, mesmo com um tipo de retorno diferente, porque a sobrecarga de métodos permite que mais de um método tenha o mesmo nome, desde que suas assinaturas sejam diferentes. A assinatura de um método é definida pelo nome e pelos tipos e quantidade de parâmetros, e não pelo tipo de retorno. Assim, a linguagem Java seria capaz de distinguir os métodos com base nos parâmetros passados, permitindo que ambos coexistam com o mesmo nome.
+     */
+
+    /*
+    10)Elabore a classe principal que instancie objetos da classe Horario.
+     e
+    11) Chame os métodos das questões 7 e, 7 f, e 7g
+     e
+    12) É possível realizar chamada ao método da questão 7e com um objeto Horario como
+handle? Se sim, o faça.
+     */
+
+    public static class Principal {
+        public static void main(String[] args) {
+            Horario horario1 = new Horario(10, 45, 50);
+            Horario horario2 = new Horario(2, 30, 20);
+
+            System.out.println("Horário 1: " + horario1.getHora() + ":" + horario1.getMinuto() + ":" + horario1.getSegundo());
+            System.out.println("Horário 2: " + horario2.getHora() + ":" + horario2.getMinuto() + ":" + horario2.getSegundo());
+
+            horario1.soma(horario2);
+            System.out.println("Horário 1 após soma: " + horario1.getHora() + ":" + horario1.getMinuto() + ":" + horario1.getSegundo());
+
+            Horario horarioSomado = Horario.somar(horario1, horario2);
+            System.out.println("Novo horário após somar horário 1 e horário 2: " + horarioSomado.getHora() + ":" + horarioSomado.getMinuto() + ":" + horarioSomado.getSegundo());
+
+
+            // Chamada do método 7e: static soma sem alterar os horários originais
+            System.out.println("\nChamando método estático soma (7e):");
+            Horario.soma(horario1, horario2);
+
+            // Chamada do método 7f: soma não estática que altera o objeto chamador
+            System.out.println("\nChamando método soma (7f):");
+            horario1.soma(horario2);
+            System.out.println("Horário 1 após soma: " + horario1.getHora() + ":" + horario1.getMinuto() + ":" + horario1.getSegundo());
+
+            // Chamada do método 7g: soma com parâmetros (horas, minutos, segundos)
+            System.out.println("\nChamando método soma (7g) com parâmetros:");
+            horario1.soma(1, 20, 40);
+            System.out.println("Horário 1 após somar horas, minutos e segundos: " + horario1.getHora() + ":" + horario1.getMinuto() + ":" + horario1.getSegundo());
+
+
+            // Chamando o método estático soma (7e) usando o objeto "horario1" como handle
+            System.out.println("\nChamando método estático soma (7e) usando objeto Horario como handle:");
+            horario1.soma(horario1, horario2);  // Chamando soma de forma estática através do objeto
+        }
+    }
+
+
+
+
 
 
 
